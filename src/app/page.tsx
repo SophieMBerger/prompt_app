@@ -58,7 +58,7 @@ export default function PromptComponent() {
         <Button onClick={generateAIPrompt} variant="outline">
           Give me a prompt!
         </Button>
-        <Button type="submit" onClick={saveStory} variant="outline">
+        <Button type="submit" onClick={saveStory}>
           Submit
         </Button>
       </div>
