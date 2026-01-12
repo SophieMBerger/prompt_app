@@ -8,6 +8,7 @@ export const stories = pgTable("stories", {
   prompt: text("prompt").notNull(),
   story: text("story").notNull(),
   createdAt: timestamp("created_at", { mode: "string" }).defaultNow().notNull(),
+  imageSrc: text("image_src"),
 });
 
 const schema = { stories };

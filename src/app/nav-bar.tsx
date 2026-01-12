@@ -25,9 +25,16 @@ export default async function NavBar() {
         <NavigationMenu>
           <NavigationMenuList className="flex items-center gap-2">
             {user ? (
-              <NavigationMenuItem>
-                <UserButton />
-              </NavigationMenuItem>
+              <>
+                <NavigationMenuItem>
+                  <Button asChild>
+                    <Link href="/stories">My Stories</Link>
+                  </Button>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <UserButton />
+                </NavigationMenuItem>
+              </>
             ) : (
               <>
                 <NavigationMenuItem>
