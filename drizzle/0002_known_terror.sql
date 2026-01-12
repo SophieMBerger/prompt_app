@@ -1,0 +1,2 @@
+ALTER TABLE "stories" ADD COLUMN "author_id" text NOT NULL;--> statement-breakpoint
+ALTER TABLE "stories" ADD CONSTRAINT "stories_author_id_usersSync_id_fk" FOREIGN KEY ("author_id") REFERENCES "public"."usersSync"("id") ON DELETE no action ON UPDATE no action;

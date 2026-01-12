@@ -8,6 +8,20 @@
       "when": 1768186549859,
       "tag": "0000_massive_albert_cleary",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1768196715412,
+      "tag": "0001_fantastic_mongoose",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1768197177792,
+      "tag": "0002_known_terror",
+      "breakpoints": true
     }
   ]
 }

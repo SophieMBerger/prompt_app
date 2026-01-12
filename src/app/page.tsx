@@ -30,12 +30,14 @@ export default function PromptComponent() {
     }
   }
 
-  function saveStory() {
+  async function saveStory() {
     const payload = {
       prompt: prompt,
       story: story,
     };
-    createStory(payload);
+
+    await createStory(payload);
+
     setStory("");
   }
 
