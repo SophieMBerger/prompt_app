@@ -5,10 +5,12 @@ import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import generateStoryPrompt from "@/ai/generateStoryPrompt";
+import { createStory } from "./actions/storyActions";
 
 export default function PromptComponent() {
   const [prompt, setPrompt] = useState("");
   const [loadingPrompt, setLoadingPrompt] = useState(false);
+  const [story, setStory] = useState("");
 
   async function generateAIPrompt() {
     console.log("🤖 generateAIPrompt called");
@@ -28,22 +30,38 @@ export default function PromptComponent() {
     }
   }
 
+  function saveStory() {
+    const payload = {
+      prompt: prompt,
+      story: story,
+    };
+    createStory(payload);
+    setStory("");
+  }
+
   return (
-    <div className="max-w-2xl mx-auto mt-10 flex flex-col gap-6">
+    <div className="max-w-2xl mx-auto mt-10 flex flex-col gap-6 min-h-screen items-center justify-center">
       <h1 className="text-3xl mx-auto">Generate Your Story Prompt</h1>
       {loadingPrompt ? (
         <Spinner className="mx-auto size-auto" />
+      ) : prompt ? (
+        <h2 className="text-2xl pt-5">{prompt}</h2>
       ) : (
-        <h2 className="text-2xl pt-10">"{prompt}"</h2>
+        <></>
       )}
-      <Textarea placeholder="Let your imagination unfold..." />
-      <Button
-        onClick={generateAIPrompt}
-        variant="outline"
-        className="w-xs mx-auto"
-      >
-        Give me a prompt!
-      </Button>
+      <Textarea
+        placeholder="Let your imagination unfold..."
+        value={story}
+        onChange={(e) => setStory(e.target.value)}
+      />
+      <div className="flex justify-center gap-4">
+        <Button onClick={generateAIPrompt} variant="outline">
+          Give me a prompt!
+        </Button>
+        <Button type="submit" onClick={saveStory} variant="outline">
+          Submit
+        </Button>
+      </div>
     </div>
   );
 }
