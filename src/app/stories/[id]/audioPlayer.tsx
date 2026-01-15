@@ -2,9 +2,14 @@
 
 import readStory from "@/ai/generateSpeech";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function AudioPlayer({ text }: { text: string }) {
+  const [loadingAudio, setLoadingAudio] = useState(false);
+
   async function playAudio() {
+    setLoadingAudio(true);
     const { base64, mimeType } = await readStory(text);
 
     const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
@@ -15,7 +20,13 @@ export default function AudioPlayer({ text }: { text: string }) {
     const audio = new Audio(url);
     audio.onended = () => URL.revokeObjectURL(url);
     await audio.play();
+    setLoadingAudio(false);
   }
 
-  return <Button onClick={playAudio}>Read this story to me</Button>;
+  return (
+    <div className="flex flex-col gap-2 items-center">
+      {loadingAudio && <Spinner className="mx-auto size-auto" />}
+      <Button onClick={playAudio}>Read this story to me</Button>
+    </div>
+  );
 }

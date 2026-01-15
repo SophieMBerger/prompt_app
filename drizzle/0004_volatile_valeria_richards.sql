@@ -1,0 +1,1 @@
+ALTER TABLE "stories" RENAME COLUMN "date_created" TO "created_at";
