@@ -13,7 +13,7 @@ export default async function Stories() {
   const usersStories = await getCurrentUsersStories(user.id);
 
   return (
-    <div className="max-w-2xl mx-auto mt-10 flex flex-col gap-6 min-h-screen items-center">
+    <div className="max-w-2xl mx-auto mt-10 mb-10 flex flex-col gap-6 min-h-screen items-center">
       <h1 className="text-2xl mx-auto">My Stories</h1>
 
       {usersStories.length === 0 && <p>You haven't written any stories yet.</p>}

@@ -37,15 +37,15 @@ export default function StoryCard({
         <CardDescription>{dateCreated}</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex flex-row items-start justify-between gap-4">
+      <CardContent className="flex items-start gap-4">
         <p>{`${storyText.substring(0, 100)}...`}</p>
         {imageSrc && (
           <Image
             src={imageSrc}
             alt="AI Generated Image"
-            height="100"
-            width="100"
-            className="mx-auto flex-1"
+            width={100}
+            height={100}
+            className="object-cover rounded-md ml-auto"
           />
         )}
       </CardContent>

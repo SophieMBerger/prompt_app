@@ -4,6 +4,7 @@ import { stackClientApp } from "../stack/client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "./nav-bar";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
           <StackTheme>
             <NavBar />
             {children}
+            <Toaster />
           </StackTheme>
         </StackProvider>
       </body>
